@@ -52,6 +52,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Hijos.findByAlergiaContraindicacion", query = "SELECT h FROM Hijos h WHERE h.alergiaContraindicacion = :alergiaContraindicacion")})
 public class Hijos implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "id_vacunas")
+    private int idVacunas;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -316,6 +321,14 @@ public class Hijos implements Serializable {
     @Override
     public String toString() {
         return "AgendaPediatrica.Hijos[ id=" + id + " ]";
+    }
+
+    public int getIdVacunas() {
+        return idVacunas;
+    }
+
+    public void setIdVacunas(int idVacunas) {
+        this.idVacunas = idVacunas;
     }
     
 }

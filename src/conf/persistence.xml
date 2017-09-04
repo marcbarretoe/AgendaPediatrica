@@ -5,6 +5,7 @@
     <class>AgendaPediatrica.Usuarios</class>
     <class>AgendaPediatrica.Padres</class>
     <class>AgendaPediatrica.Hijos</class>
+    <class>AgendaPediatrica.Vacunas</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/AgendaPediatrica"/>

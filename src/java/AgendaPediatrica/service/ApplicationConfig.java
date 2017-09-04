@@ -32,6 +32,7 @@ public class ApplicationConfig extends Application {
         resources.add(AgendaPediatrica.service.HijosFacadeREST.class);
         resources.add(AgendaPediatrica.service.PadresFacadeREST.class);
         resources.add(AgendaPediatrica.service.UsuariosFacadeREST.class);
+        resources.add(AgendaPediatrica.service.VacunasFacadeREST.class);
     }
     
 }

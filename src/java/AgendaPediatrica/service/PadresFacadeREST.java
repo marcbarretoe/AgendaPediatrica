@@ -9,6 +9,7 @@ import AgendaPediatrica.Padres;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -85,7 +86,7 @@ public class PadresFacadeREST extends AbstractFacade<Padres> {
 
     @Override
     protected EntityManager getEntityManager() {
-        return em;
+        return em=Persistence.createEntityManagerFactory("AgendaPediatricaPU").createEntityManager();
     }
     
 }

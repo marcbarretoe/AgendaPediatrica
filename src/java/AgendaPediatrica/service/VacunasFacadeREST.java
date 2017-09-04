@@ -5,7 +5,7 @@
  */
 package AgendaPediatrica.service;
 
-import AgendaPediatrica.Usuarios;
+import AgendaPediatrica.Vacunas;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -26,54 +26,54 @@ import javax.ws.rs.core.MediaType;
  * @author marceloe
  */
 @Stateless
-@Path("agendapediatrica.usuarios")
-public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
+@Path("agendapediatrica.vacunas")
+public class VacunasFacadeREST extends AbstractFacade<Vacunas> {
 
     @PersistenceContext(unitName = "AgendaPediatricaPU")
     private EntityManager em;
 
-    public UsuariosFacadeREST() {
-        super(Usuarios.class);
+    public VacunasFacadeREST() {
+        super(Vacunas.class);
     }
 
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Usuarios entity) {
+    public void create(Vacunas entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") String id, Usuarios entity) {
+    public void edit(@PathParam("id") Integer id, Vacunas entity) {
         super.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") String id) {
+    public void remove(@PathParam("id") Integer id) {
         super.remove(super.find(id));
     }
 
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Usuarios find(@PathParam("id") String id) {
+    public Vacunas find(@PathParam("id") Integer id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Usuarios> findAll() {
+    public List<Vacunas> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Usuarios> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<Vacunas> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 
