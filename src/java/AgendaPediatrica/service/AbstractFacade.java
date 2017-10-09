@@ -5,8 +5,11 @@
  */
 package AgendaPediatrica.service;
 
+import AgendaPediatrica.Usuarios;
+import dto.UsuarioDTO;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.ws.rs.core.Response;
 
 /**
  *
@@ -61,4 +64,21 @@ public abstract class AbstractFacade<T> {
         return ((Long) q.getSingleResult()).intValue();
     }
     
+    public Response validarUsuario(String correo){
+        Usuarios usuario=(Usuarios) getEntityManager().createNamedQuery("Usuario.findByCorreo").setParameter("correo",correo).getSingleResult();
+        
+        UsuarioDTO usuarioDTO = new UsuarioDTO();
+        usuarioDTO.setCorreo(correo);
+        if(usuario != null){
+            usuarioDTO.setId(usuario.getId());
+            usuarioDTO.setNombre(usuario.getNombre());
+            usuarioDTO.setValido(Boolean.TRUE);
+            
+        }else {
+            usuarioDTO.setId(0);
+            usuarioDTO.setNombre("");
+            usuarioDTO.setValido(Boolean.FALSE);
+        }
+        return Response.ok(usuarioDTO).build();
+    }
 }

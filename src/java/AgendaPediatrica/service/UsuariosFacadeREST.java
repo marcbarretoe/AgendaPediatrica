@@ -20,6 +20,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  *
@@ -82,6 +83,14 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
     @Produces(MediaType.TEXT_PLAIN)
     public String countREST() {
         return String.valueOf(super.count());
+    }
+    
+    @POST
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Path("ValidarUsuario")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response validarUsuario(String correo){
+        return super.validarUsuario(correo);
     }
 
     @Override
