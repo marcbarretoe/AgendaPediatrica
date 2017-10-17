@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/marceloe/NetBeansProjects/AgendaPediatrica/src/java/AgendaPediatrica/service/AbstractFacade.java</file>
             <file>file:/home/marceloe/NetBeansProjects/AgendaPediatrica/src/java/AgendaPediatrica/service/ApplicationConfig.java</file>
-            <file>file:/home/marceloe/NetBeansProjects/AgendaPediatrica/web/index.html</file>
             <file>file:/home/marceloe/NetBeansProjects/AgendaPediatrica/src/java/AgendaPediatrica/service/UsuariosFacadeREST.java</file>
-            <file>file:/home/marceloe/NetBeansProjects/AgendaPediatrica/src/java/AgendaPediatrica/service/HijosFacadeREST.java</file>
-            <file>file:/home/marceloe/NetBeansProjects/AgendaPediatrica/src/java/AgendaPediatrica/Vacunas.java</file>
-            <file>file:/home/marceloe/NetBeansProjects/AgendaPediatrica/src/java/AgendaPediatrica/service/PadresFacadeREST.java</file>
-            <file>file:/home/marceloe/NetBeansProjects/AgendaPediatrica/src/java/AgendaPediatrica/service/VacunasFacadeREST.java</file>
+            <file>file:/home/marceloe/NetBeansProjects/AgendaPediatrica/src/java/dto/UsuarioDTO.java</file>
             <file>file:/home/marceloe/NetBeansProjects/AgendaPediatrica/src/java/AgendaPediatrica/Usuarios.java</file>
         </group>
     </open-files>

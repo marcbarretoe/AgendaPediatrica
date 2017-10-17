@@ -22,10 +22,13 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+
+        
 /**
  *
  * @author marceloe
  */
+
 @Stateless
 @Path("agendapediatrica.usuarios")
 public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
@@ -90,7 +93,10 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
     @Path("ValidarUsuario")
     @Produces({MediaType.APPLICATION_JSON})
     public Response validarUsuario(String correo){
+        Gson gson = new Gson();
+
         return super.validarUsuario(correo);
+        
     }
 
     @Override
