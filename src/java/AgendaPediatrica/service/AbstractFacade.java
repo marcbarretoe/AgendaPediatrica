@@ -65,8 +65,7 @@ public abstract class AbstractFacade<T> {
     }
     
     public Response validarUsuario(String correo){
-        
-       
+               
        UsuarioDTO usuarioDTO = new UsuarioDTO();
        try{
             Usuarios usuario= (Usuarios)getEntityManager().createNamedQuery("Usuarios.findByCorreoElectronico")
