@@ -6,6 +6,8 @@
 package AgendaPediatrica.service;
 
 import AgendaPediatrica.Usuarios;
+import com.google.gson.Gson;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -94,8 +96,10 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
     @Produces({MediaType.APPLICATION_JSON})
     public Response validarUsuario(String correo){
         Gson gson = new Gson();
+        HashMap<String, String> mapa = gson.fromJson(correo,HashMap.class);
+        System.out.println("email:"+mapa.get("correo"));
 
-        return super.validarUsuario(correo);
+        return super.validarUsuario(mapa.get("correo"));
         
     }
 

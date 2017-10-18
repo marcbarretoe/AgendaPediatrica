@@ -66,23 +66,25 @@ public abstract class AbstractFacade<T> {
     
     public Response validarUsuario(String correo){
         
-       // Usuarios usuario= (Usuarios)getEntityManager().createNamedQuery("Usuarios.findByCorreoElectronico").setParameter("correoElectronico",correo).getSingleResult();
        
-        Usuarios usuario= (Usuarios)getEntityManager();//.createQuery("Usuarios.findByCorreoElectronico").setParameter("correoElectronico",correo).getSingleResult();
-        //Usuarios usuario= new Usuarios (aux);
-        /*System.out.println("Aqui:"+usuario);*/
-        UsuarioDTO usuarioDTO = new UsuarioDTO();
-        usuarioDTO.setCorreo(usuario.getCorreoElectronico());
-        if(usuario != null){
+       UsuarioDTO usuarioDTO = new UsuarioDTO();
+       try{
+            Usuarios usuario= (Usuarios)getEntityManager().createNamedQuery("Usuarios.findByCorreoElectronico")
+                    .setParameter("correoElectronico",correo).getSingleResult();
+        
+        
+            usuarioDTO.setCorreo(usuario.getCorreoElectronico());
             usuarioDTO.setId(usuario.getId());
             usuarioDTO.setNombre(usuario.getNombre());
             usuarioDTO.setValido(Boolean.TRUE);
             
-        }else {
-            usuarioDTO.setId(0);
-            usuarioDTO.setNombre("");
-            usuarioDTO.setValido(Boolean.FALSE);
-        }
+    
+          
+       } catch(Exception e){
+           usuarioDTO.setId(0);
+           usuarioDTO.setNombre("");
+           usuarioDTO.setValido(Boolean.FALSE);
+       }
         return Response.ok(usuarioDTO).build();
     }
 }
