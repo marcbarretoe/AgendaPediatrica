@@ -76,8 +76,26 @@ public abstract class AbstractFacade<T> {
             usuarioDTO.setId(usuario.getId());
             usuarioDTO.setNombre(usuario.getNombre());
             usuarioDTO.setValido(Boolean.TRUE);
-            
+                
+       } catch(Exception e){
+           usuarioDTO.setId(0);
+           usuarioDTO.setNombre("");
+           usuarioDTO.setValido(Boolean.FALSE);
+           
+       }
+        return Response.ok(usuarioDTO).build();
+    }
     
+    
+        public Response mostrarHijo(String correo){
+               
+       UsuarioDTO usuarioDTO = new UsuarioDTO();
+       try{
+            Usuarios usuario= (Usuarios)getEntityManager().createNamedQuery("Usuarios.findByCorreoElectronico")
+                    .setParameter("correoElectronico",correo).getSingleResult();
+        
+            usuarioDTO.setHijosCollection(usuario.getHijosCollection());
+         
           
        } catch(Exception e){
            usuarioDTO.setId(0);

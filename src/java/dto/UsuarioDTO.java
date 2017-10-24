@@ -5,7 +5,9 @@
  */
 package dto;
 
+import AgendaPediatrica.Hijos;
 import java.io.Serializable;
+import java.util.Collection;
 /**
  *
  * @author marceloe
@@ -15,7 +17,9 @@ public class UsuarioDTO implements Serializable{
     private String nombre;
     private String correo;
     private Boolean valido;
-
+    private Collection<Hijos>hijosCollection;
+    //private String<hijoshijosCollection;
+    
     public Integer getId() {
         return id;
     }
@@ -46,6 +50,14 @@ public class UsuarioDTO implements Serializable{
 
     public void setValido(Boolean valido) {
         this.valido = valido;
+    }
+
+    public Collection<Hijos> getHijosCollection() {
+        return hijosCollection;
+    }
+
+    public void setHijosCollection(Collection<Hijos> hijosCollection) {
+        this.hijosCollection = hijosCollection;
     }
     
     

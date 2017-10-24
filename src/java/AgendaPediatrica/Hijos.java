@@ -49,7 +49,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Hijos.findByReferenciaDomicilio", query = "SELECT h FROM Hijos h WHERE h.referenciaDomicilio = :referenciaDomicilio")
     , @NamedQuery(name = "Hijos.findByTelContacto", query = "SELECT h FROM Hijos h WHERE h.telContacto = :telContacto")
     , @NamedQuery(name = "Hijos.findBySeguroMedico", query = "SELECT h FROM Hijos h WHERE h.seguroMedico = :seguroMedico")
-    , @NamedQuery(name = "Hijos.findByAlergiaContraindicacion", query = "SELECT h FROM Hijos h WHERE h.alergiaContraindicacion = :alergiaContraindicacion")})
+    , @NamedQuery(name = "Hijos.findByAlergiaContraindicacion", query = "SELECT h FROM Hijos h WHERE h.alergiaContraindicacion = :alergiaContraindicacion")
+    , @NamedQuery(name = "Hijos.findByIdUsuario", query = "SELECT h FROM Hijos h WHERE h.idUsuario = :idUsuario")})
+//, @NamedQuery(name = "Hijos.findByIdUsuario", query = "SELECT h FROM Hijos h WHERE h.idUsuario = :idUsuario")
 public class Hijos implements Serializable {
 
     @Basic(optional = false)
@@ -133,10 +135,20 @@ public class Hijos implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "alergia_contraindicacion")
     private String alergiaContraindicacion;
-    @JoinColumn(name = "id_padres", referencedColumnName = "id")
+    //@JoinColumn(name = "id_padres", referencedColumnName = "id")
+    //@ManyToOne(optional = false)
+    //private Padres idPadres;
+    
+    @JoinColumn(name="id_usuario", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Padres idPadres;
+    private Usuarios idUsuario;
+    
+    
+    //private Usuarios usuario;
+    //@ManyToOne
+    //private Vacunas vacunas;
 
+    
     public Hijos() {
     }
 
@@ -144,7 +156,7 @@ public class Hijos implements Serializable {
         this.id = id;
     }
 
-    public Hijos(Integer id, BigInteger documentoIdentidad, String nombres, String apellidos, Date fechaNacimiento, String lugarNacimiento, Character sexo, String nacionalidad, String direccion, String departamento, String municipio, String barrio, String referenciaDomicilio, Character seguroMedico, String alergiaContraindicacion) {
+    public Hijos(Integer id, BigInteger documentoIdentidad, String nombres, String apellidos, Date fechaNacimiento, String lugarNacimiento, Character sexo, String nacionalidad, String direccion, String departamento, String municipio, String barrio, String referenciaDomicilio, Character seguroMedico, String alergiaContraindicacion, Usuarios usuario) {
         this.id = id;
         this.documentoIdentidad = documentoIdentidad;
         this.nombres = nombres;
@@ -160,6 +172,8 @@ public class Hijos implements Serializable {
         this.referenciaDomicilio = referenciaDomicilio;
         this.seguroMedico = seguroMedico;
         this.alergiaContraindicacion = alergiaContraindicacion;
+       // this.vacunas = idVacunas;
+        //this.usuario = usuario;
     }
 
     public Integer getId() {
@@ -289,7 +303,7 @@ public class Hijos implements Serializable {
     public void setAlergiaContraindicacion(String alergiaContraindicacion) {
         this.alergiaContraindicacion = alergiaContraindicacion;
     }
-
+/*
     public Padres getIdPadres() {
         return idPadres;
     }
@@ -297,7 +311,16 @@ public class Hijos implements Serializable {
     public void setIdPadres(Padres idPadres) {
         this.idPadres = idPadres;
     }
+*/
 
+    public Usuarios getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Usuarios idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
