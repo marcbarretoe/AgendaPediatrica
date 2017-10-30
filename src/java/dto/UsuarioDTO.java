@@ -8,6 +8,8 @@ package dto;
 import AgendaPediatrica.Hijos;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 /**
  *
  * @author marceloe
@@ -17,8 +19,12 @@ public class UsuarioDTO implements Serializable{
     private String nombre;
     private String correo;
     private Boolean valido;
-    private Collection<Hijos>hijosCollection;
+    private List<Hijos> hijosCollection;
     //private String<hijoshijosCollection;
+    
+    public UsuarioDTO() {
+        
+    }
     
     public Integer getId() {
         return id;
@@ -52,13 +58,22 @@ public class UsuarioDTO implements Serializable{
         this.valido = valido;
     }
 
-    public Collection<Hijos> getHijosCollection() {
+    public List<Hijos> getHijosCollection() {
         return hijosCollection;
     }
 
-    public void setHijosCollection(Collection<Hijos> hijosCollection) {
+    public void setHijosCollection(List<Hijos> hijosCollection) {
         this.hijosCollection = hijosCollection;
     }
+
+    @Override
+    public String toString() {
+        return "UsuarioDTO{" + "id=" + id + ", nombre=" + nombre + ", correo=" + correo + ", valido=" + valido + ", hijosCollection=" + hijosCollection + '}';
+    }
+    
+
+   
+    
     
     
 }

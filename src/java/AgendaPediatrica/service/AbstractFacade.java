@@ -5,10 +5,17 @@
  */
 package AgendaPediatrica.service;
 
+import AgendaPediatrica.Hijos;
 import AgendaPediatrica.Usuarios;
+import com.google.common.collect.Lists;
+import com.google.gson.Gson;
 import dto.UsuarioDTO;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.EntityManager;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Response;
 
 /**
@@ -63,45 +70,5 @@ public abstract class AbstractFacade<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-    
-    public Response validarUsuario(String correo){
-               
-       UsuarioDTO usuarioDTO = new UsuarioDTO();
-       try{
-            Usuarios usuario= (Usuarios)getEntityManager().createNamedQuery("Usuarios.findByCorreoElectronico")
-                    .setParameter("correoElectronico",correo).getSingleResult();
-        
-        
-            usuarioDTO.setCorreo(usuario.getCorreoElectronico());
-            usuarioDTO.setId(usuario.getId());
-            usuarioDTO.setNombre(usuario.getNombre());
-            usuarioDTO.setValido(Boolean.TRUE);
-                
-       } catch(Exception e){
-           usuarioDTO.setId(0);
-           usuarioDTO.setNombre("");
-           usuarioDTO.setValido(Boolean.FALSE);
-           
-       }
-        return Response.ok(usuarioDTO).build();
-    }
-    
-    
-        public Response mostrarHijo(String correo){
-               
-       UsuarioDTO usuarioDTO = new UsuarioDTO();
-       try{
-            Usuarios usuario= (Usuarios)getEntityManager().createNamedQuery("Usuarios.findByCorreoElectronico")
-                    .setParameter("correoElectronico",correo).getSingleResult();
-        
-            usuarioDTO.setHijosCollection(usuario.getHijosCollection());
-         
-          
-       } catch(Exception e){
-           usuarioDTO.setId(0);
-           usuarioDTO.setNombre("");
-           usuarioDTO.setValido(Boolean.FALSE);
-       }
-        return Response.ok(usuarioDTO).build();
-    }
+
 }
