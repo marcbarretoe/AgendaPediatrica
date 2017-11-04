@@ -23,9 +23,9 @@ import javax.ws.rs.core.MediaType;
 
 /**
  *
- * @author marceloe
+ * @author Evelyn
  */
-@Stateless
+//@Stateless
 @Path("agendapediatrica.hijos")
 public class HijosFacadeREST extends AbstractFacade<Hijos> {
 

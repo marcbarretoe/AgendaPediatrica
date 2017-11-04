@@ -5,8 +5,10 @@
  */
 package AgendaPediatrica.service;
 
+import AgendaPediatrica.Hijos;
 import AgendaPediatrica.Usuarios;
 import com.google.gson.Gson;
+import dto.UsuarioDTO;
 import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -24,14 +26,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-
-        
 /**
  *
- * @author marceloe
+ * @author Evelyn
  */
-
-@Stateless
+//@Stateless
 @Path("agendapediatrica.usuarios")
 public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
 
@@ -89,7 +88,7 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
     public String countREST() {
         return String.valueOf(super.count());
     }
-    
+
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("ValidarUsuario")
@@ -103,7 +102,29 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
         
     }
     
-    @POST
+     public Response validarUsuarioLocal(String correo){
+               
+       UsuarioDTO usuarioDTO = new UsuarioDTO();
+       try{
+            Usuarios usuario= (Usuarios)getEntityManager().createNamedQuery("Usuarios.findByCorreoElectronico")
+                    .setParameter("correoElectronico",correo).getSingleResult();
+        
+        
+            usuarioDTO.setCorreo(usuario.getCorreoElectronico());
+            usuarioDTO.setId(usuario.getId());
+            usuarioDTO.setNombre(usuario.getNombre());
+            usuarioDTO.setHijosCollection((List<Hijos>) usuario.getHijosCollection());
+            usuarioDTO.setValido(Boolean.TRUE);
+                
+       } catch(Exception e){
+           usuarioDTO.setId(0);
+           usuarioDTO.setNombre("");
+           usuarioDTO.setValido(Boolean.FALSE);
+           
+       }
+        return Response.ok(usuarioDTO).build();
+    }
+    /*@POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("MostrarHijo")
     @Produces({MediaType.APPLICATION_JSON})
@@ -113,8 +134,8 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
         System.out.println("email:"+mapa.get("correo"));
         return super.mostrarHijo(mapa.get("correo"));
         
-    }
-
+    }*/
+    
     @Override
     protected EntityManager getEntityManager() {
         return em=Persistence.createEntityManagerFactory("AgendaPediatricaPU").createEntityManager();

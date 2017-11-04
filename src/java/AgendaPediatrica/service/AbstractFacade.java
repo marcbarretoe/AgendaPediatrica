@@ -1,10 +1,11 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+    * To change this template file, choose Tools | Templates
+    * and open the template in the editor.
  */
 package AgendaPediatrica.service;
 
+import AgendaPediatrica.Hijos;
 import AgendaPediatrica.Usuarios;
 import dto.UsuarioDTO;
 import java.util.List;
@@ -87,14 +88,14 @@ public abstract class AbstractFacade<T> {
     }
     
     
-        public Response mostrarHijo(String correo){
+       public Response mostrarHijo(String correo){
                
        UsuarioDTO usuarioDTO = new UsuarioDTO();
        try{
             Usuarios usuario= (Usuarios)getEntityManager().createNamedQuery("Usuarios.findByCorreoElectronico")
                     .setParameter("correoElectronico",correo).getSingleResult();
         
-            usuarioDTO.setHijosCollection(usuario.getHijosCollection());
+            usuarioDTO.setHijosCollection((List<Hijos>) usuario.getHijosCollection());
          
           
        } catch(Exception e){

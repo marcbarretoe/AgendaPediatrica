@@ -19,6 +19,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 
 
@@ -116,7 +117,7 @@ public class Usuarios implements Serializable {
     public String toString() {
         return "AgendaPediatrica.Usuarios[ correoElectronico=" + correoElectronico + " ]";
     }
-
+    @XmlTransient
     public Collection<Hijos> getHijosCollection() {
         return hijosCollection;
     }

@@ -3,12 +3,11 @@
   <persistence-unit name="AgendaPediatricaPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>AgendaPediatrica.Usuarios</class>
-    <class>AgendaPediatrica.Padres</class>
     <class>AgendaPediatrica.Hijos</class>
     <class>AgendaPediatrica.Vacunas</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/AgendaPediatrica"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5433/AgendaPediatrica"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdbc.password" value="postgres"/>

@@ -6,6 +6,7 @@
 package AgendaPediatrica;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +16,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -34,6 +37,14 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Vacunas.findByEdadAplicacion", query = "SELECT v FROM Vacunas v WHERE v.edadAplicacion = :edadAplicacion")
     , @NamedQuery(name = "Vacunas.findByUnidadTiempo", query = "SELECT v FROM Vacunas v WHERE v.unidadTiempo = :unidadTiempo")})
 public class Vacunas implements Serializable {
+
+    @Column(name = "aplicada")
+    private Character aplicada;
+    @Column(name = "fecha_aplicacion")
+    @Temporal(TemporalType.DATE)
+    private Date fechaAplicacion;
+    @Column(name = "id_hijo")
+    private Integer idHijo;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -140,6 +151,30 @@ public class Vacunas implements Serializable {
     @Override
     public String toString() {
         return "AgendaPediatrica.Vacunas[ id=" + id + " ]";
+    }
+
+    public Character getAplicada() {
+        return aplicada;
+    }
+
+    public void setAplicada(Character aplicada) {
+        this.aplicada = aplicada;
+    }
+
+    public Date getFechaAplicacion() {
+        return fechaAplicacion;
+    }
+
+    public void setFechaAplicacion(Date fechaAplicacion) {
+        this.fechaAplicacion = fechaAplicacion;
+    }
+
+    public Integer getIdHijo() {
+        return idHijo;
+    }
+
+    public void setIdHijo(Integer idHijo) {
+        this.idHijo = idHijo;
     }
     
 }
