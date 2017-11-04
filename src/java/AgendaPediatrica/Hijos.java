@@ -33,31 +33,28 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "hijos")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Hijos.findAll", query = "SELECT h FROM Hijos h")
+    /*@NamedQuery(name = "Hijos.findAll", query = "SELECT h FROM Hijos h")
     , @NamedQuery(name = "Hijos.findById", query = "SELECT h FROM Hijos h WHERE h.id = :id")
     , @NamedQuery(name = "Hijos.findByDocumentoIdentidad", query = "SELECT h FROM Hijos h WHERE h.documentoIdentidad = :documentoIdentidad")
     , @NamedQuery(name = "Hijos.findByNombres", query = "SELECT h FROM Hijos h WHERE h.nombres = :nombres")
     , @NamedQuery(name = "Hijos.findByApellidos", query = "SELECT h FROM Hijos h WHERE h.apellidos = :apellidos")
     , @NamedQuery(name = "Hijos.findByFechaNacimiento", query = "SELECT h FROM Hijos h WHERE h.fechaNacimiento = :fechaNacimiento")
-    , @NamedQuery(name = "Hijos.findByLugarNacimiento", query = "SELECT h FROM Hijos h WHERE h.lugarNacimiento = :lugarNacimiento")
+    //, @NamedQuery(name = "Hijos.findByLugarNacimiento", query = "SELECT h FROM Hijos h WHERE h.lugarNacimiento = :lugarNacimiento")
     , @NamedQuery(name = "Hijos.findBySexo", query = "SELECT h FROM Hijos h WHERE h.sexo = :sexo")
     , @NamedQuery(name = "Hijos.findByNacionalidad", query = "SELECT h FROM Hijos h WHERE h.nacionalidad = :nacionalidad")
-    , @NamedQuery(name = "Hijos.findByDireccion", query = "SELECT h FROM Hijos h WHERE h.direccion = :direccion")
-    , @NamedQuery(name = "Hijos.findByDepartamento", query = "SELECT h FROM Hijos h WHERE h.departamento = :departamento")
-    , @NamedQuery(name = "Hijos.findByMunicipio", query = "SELECT h FROM Hijos h WHERE h.municipio = :municipio")
+    //, @NamedQuery(name = "Hijos.findByDireccion", query = "SELECT h FROM Hijos h WHERE h.direccion = :direccion")
+    //, @NamedQuery(name = "Hijos.findByDepartamento", query = "SELECT h FROM Hijos h WHERE h.departamento = :departamento")
+   // , @NamedQuery(name = "Hijos.findByMunicipio", query = "SELECT h FROM Hijos h WHERE h.municipio = :municipio")
     , @NamedQuery(name = "Hijos.findByBarrio", query = "SELECT h FROM Hijos h WHERE h.barrio = :barrio")
     , @NamedQuery(name = "Hijos.findByReferenciaDomicilio", query = "SELECT h FROM Hijos h WHERE h.referenciaDomicilio = :referenciaDomicilio")
     , @NamedQuery(name = "Hijos.findByTelContacto", query = "SELECT h FROM Hijos h WHERE h.telContacto = :telContacto")
     , @NamedQuery(name = "Hijos.findBySeguroMedico", query = "SELECT h FROM Hijos h WHERE h.seguroMedico = :seguroMedico")
-    , @NamedQuery(name = "Hijos.findByAlergiaContraindicacion", query = "SELECT h FROM Hijos h WHERE h.alergiaContraindicacion = :alergiaContraindicacion")
-    , @NamedQuery(name = "Hijos.findByIdUsuario", query = "SELECT h FROM Hijos h WHERE h.idUsuario = :idUsuario")})
+    , @NamedQuery(name = "Hijos.findByAlergiaContraindicacion", query = "SELECT h FROM Hijos h WHERE h.alergiaContraindicacion = :alergiaContraindicacion")*/
+    @NamedQuery(name = "Hijos.findByIdUsuario", query = "SELECT h FROM Hijos h WHERE h.idUsuario = :idUsuario")})
 //, @NamedQuery(name = "Hijos.findByIdUsuario", query = "SELECT h FROM Hijos h WHERE h.idUsuario = :idUsuario")
 public class Hijos implements Serializable {
 
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "id_vacunas")
-    private int idVacunas;
+
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -65,88 +62,46 @@ public class Hijos implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "documento_identidad")
     private BigInteger documentoIdentidad;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
     @Column(name = "nombres")
     private String nombres;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
     @Column(name = "apellidos")
     private String apellidos;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "fecha_nacimiento")
     @Temporal(TemporalType.DATE)
     private Date fechaNacimiento;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 2147483647)
-    @Column(name = "lugar_nacimiento")
-    private String lugarNacimiento;
+   
     @Basic(optional = false)
     @NotNull
     @Column(name = "sexo")
     private Character sexo;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
     @Column(name = "nacionalidad")
     private String nacionalidad;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 2147483647)
-    @Column(name = "direccion")
-    private String direccion;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 2147483647)
-    @Column(name = "departamento")
-    private String departamento;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 2147483647)
-    @Column(name = "municipio")
-    private String municipio;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 2147483647)
-    @Column(name = "barrio")
-    private String barrio;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 2147483647)
-    @Column(name = "referencia_domicilio")
-    private String referenciaDomicilio;
-    @Size(max = 2147483647)
-    @Column(name = "tel_contacto")
-    private String telContacto;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "seguro_medico")
-    private Character seguroMedico;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 2147483647)
-    @Column(name = "alergia_contraindicacion")
-    private String alergiaContraindicacion;
-    //@JoinColumn(name = "id_padres", referencedColumnName = "id")
-    //@ManyToOne(optional = false)
-    //private Padres idPadres;
+
     
     @JoinColumn(name="id_usuario", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Usuarios idUsuario;
     
-    
-    //private Usuarios usuario;
-    //@ManyToOne
-    //private Vacunas vacunas;
 
     
     public Hijos() {
@@ -162,17 +117,9 @@ public class Hijos implements Serializable {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.fechaNacimiento = fechaNacimiento;
-        this.lugarNacimiento = lugarNacimiento;
         this.sexo = sexo;
         this.nacionalidad = nacionalidad;
-        this.direccion = direccion;
-        this.departamento = departamento;
-        this.municipio = municipio;
-        this.barrio = barrio;
-        this.referenciaDomicilio = referenciaDomicilio;
-        this.seguroMedico = seguroMedico;
-        this.alergiaContraindicacion = alergiaContraindicacion;
-       // this.vacunas = idVacunas;
+   
         //this.usuario = usuario;
     }
 
@@ -216,14 +163,6 @@ public class Hijos implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getLugarNacimiento() {
-        return lugarNacimiento;
-    }
-
-    public void setLugarNacimiento(String lugarNacimiento) {
-        this.lugarNacimiento = lugarNacimiento;
-    }
-
     public Character getSexo() {
         return sexo;
     }
@@ -240,79 +179,7 @@ public class Hijos implements Serializable {
         this.nacionalidad = nacionalidad;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public String getDepartamento() {
-        return departamento;
-    }
-
-    public void setDepartamento(String departamento) {
-        this.departamento = departamento;
-    }
-
-    public String getMunicipio() {
-        return municipio;
-    }
-
-    public void setMunicipio(String municipio) {
-        this.municipio = municipio;
-    }
-
-    public String getBarrio() {
-        return barrio;
-    }
-
-    public void setBarrio(String barrio) {
-        this.barrio = barrio;
-    }
-
-    public String getReferenciaDomicilio() {
-        return referenciaDomicilio;
-    }
-
-    public void setReferenciaDomicilio(String referenciaDomicilio) {
-        this.referenciaDomicilio = referenciaDomicilio;
-    }
-
-    public String getTelContacto() {
-        return telContacto;
-    }
-
-    public void setTelContacto(String telContacto) {
-        this.telContacto = telContacto;
-    }
-
-    public Character getSeguroMedico() {
-        return seguroMedico;
-    }
-
-    public void setSeguroMedico(Character seguroMedico) {
-        this.seguroMedico = seguroMedico;
-    }
-
-    public String getAlergiaContraindicacion() {
-        return alergiaContraindicacion;
-    }
-
-    public void setAlergiaContraindicacion(String alergiaContraindicacion) {
-        this.alergiaContraindicacion = alergiaContraindicacion;
-    }
-/*
-    public Padres getIdPadres() {
-        return idPadres;
-    }
-
-    public void setIdPadres(Padres idPadres) {
-        this.idPadres = idPadres;
-    }
-*/
-
+    
     public Usuarios getIdUsuario() {
         return idUsuario;
     }
@@ -344,14 +211,6 @@ public class Hijos implements Serializable {
     @Override
     public String toString() {
         return "AgendaPediatrica.Hijos[ id=" + id + " ]";
-    }
-
-    public int getIdVacunas() {
-        return idVacunas;
-    }
-
-    public void setIdVacunas(int idVacunas) {
-        this.idVacunas = idVacunas;
     }
     
 }

@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -30,12 +32,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "vacunas")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Vacunas.findAll", query = "SELECT v FROM Vacunas v")
+    /*@NamedQuery(name = "Vacunas.findAll", query = "SELECT v FROM Vacunas v")
     , @NamedQuery(name = "Vacunas.findById", query = "SELECT v FROM Vacunas v WHERE v.id = :id")
     , @NamedQuery(name = "Vacunas.findByDescripcionVacunas", query = "SELECT v FROM Vacunas v WHERE v.descripcionVacunas = :descripcionVacunas")
     , @NamedQuery(name = "Vacunas.findByEnfermedadVacunas", query = "SELECT v FROM Vacunas v WHERE v.enfermedadVacunas = :enfermedadVacunas")
     , @NamedQuery(name = "Vacunas.findByEdadAplicacion", query = "SELECT v FROM Vacunas v WHERE v.edadAplicacion = :edadAplicacion")
-    , @NamedQuery(name = "Vacunas.findByUnidadTiempo", query = "SELECT v FROM Vacunas v WHERE v.unidadTiempo = :unidadTiempo")})
+    , @NamedQuery(name = "Vacunas.findByUnidadTiempo", query = "SELECT v FROM Vacunas v WHERE v.unidadTiempo = :unidadTiempo")})*/
+    @NamedQuery(name = "Vacunas.findByIdHijo", query = "SELECT v FROM Vacunas v WHERE v.idHijo = :idHijo")})
 public class Vacunas implements Serializable {
 
     @Column(name = "aplicada")
@@ -43,9 +46,12 @@ public class Vacunas implements Serializable {
     @Column(name = "fecha_aplicacion")
     @Temporal(TemporalType.DATE)
     private Date fechaAplicacion;
-    @Column(name = "id_hijo")
-    private Integer idHijo;
-
+    //@Column(name = "id_hijo")
+   // private Integer idHijo;
+    @JoinColumn(name="id_hijo", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Hijos idHijo;
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,16 +68,7 @@ public class Vacunas implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "enfermedad_vacunas")
     private String enfermedadVacunas;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 2147483647)
-    @Column(name = "edad_aplicacion")
-    private String edadAplicacion;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 2147483647)
-    @Column(name = "unidad_tiempo")
-    private String unidadTiempo;
+  
 
     public Vacunas() {
     }
@@ -80,12 +77,11 @@ public class Vacunas implements Serializable {
         this.id = id;
     }
 
-    public Vacunas(Integer id, String descripcionVacunas, String enfermedadVacunas, String edadAplicacion, String unidadTiempo) {
+    public Vacunas(Integer id, String descripcionVacunas, String enfermedadVacunas, Date fechaAplicacion, String aplicada) {
         this.id = id;
         this.descripcionVacunas = descripcionVacunas;
         this.enfermedadVacunas = enfermedadVacunas;
-        this.edadAplicacion = edadAplicacion;
-        this.unidadTiempo = unidadTiempo;
+ 
     }
 
     public Integer getId() {
@@ -112,22 +108,7 @@ public class Vacunas implements Serializable {
         this.enfermedadVacunas = enfermedadVacunas;
     }
 
-    public String getEdadAplicacion() {
-        return edadAplicacion;
-    }
-
-    public void setEdadAplicacion(String edadAplicacion) {
-        this.edadAplicacion = edadAplicacion;
-    }
-
-    public String getUnidadTiempo() {
-        return unidadTiempo;
-    }
-
-    public void setUnidadTiempo(String unidadTiempo) {
-        this.unidadTiempo = unidadTiempo;
-    }
-
+ 
     @Override
     public int hashCode() {
         int hash = 0;
@@ -169,12 +150,14 @@ public class Vacunas implements Serializable {
         this.fechaAplicacion = fechaAplicacion;
     }
 
-    public Integer getIdHijo() {
+    public Hijos getIdHijo() {
         return idHijo;
     }
 
-    public void setIdHijo(Integer idHijo) {
+    public void setIdHijo(Hijos idHijo) {
         this.idHijo = idHijo;
     }
+
+   
     
 }

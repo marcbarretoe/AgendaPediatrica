@@ -98,11 +98,11 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
         HashMap<String, String> mapa = gson.fromJson(correo,HashMap.class);
         System.out.println("email:"+mapa.get("correo"));
 
-        return super.validarUsuario(mapa.get("correo"));
+        return validarUsuarioLocal(mapa.get("correo"));
         
     }
     
-     public Response validarUsuarioLocal(String correo){
+     public Response validarUsuarioLocal(String correo) {
                
        UsuarioDTO usuarioDTO = new UsuarioDTO();
        try{
@@ -117,10 +117,12 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
             usuarioDTO.setValido(Boolean.TRUE);
                 
        } catch(Exception e){
+           
            usuarioDTO.setId(0);
            usuarioDTO.setNombre("");
            usuarioDTO.setValido(Boolean.FALSE);
-           
+           e.printStackTrace();
+           throw e;
        }
         return Response.ok(usuarioDTO).build();
     }
