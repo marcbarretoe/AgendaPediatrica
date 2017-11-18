@@ -7,12 +7,15 @@ package AgendaPediatrica;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -49,11 +52,10 @@ public class Usuarios implements Serializable {
     @Column(name = "id")
     private int id;
     
-    //@JoinColumn(name = "id", referencedColumnName = "idUsuario")
-    //@OneToMany
-    //private Collection<Hijos> hijosCollection;
+   
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.EAGER)
+    //@JoinTable(name="id")
     private Collection<Hijos> hijosCollection;
 
 
@@ -125,6 +127,11 @@ public class Usuarios implements Serializable {
     public void setHijosCollection(Collection<Hijos> hijosCollection) {
         this.hijosCollection = hijosCollection;
     }
+
+    
+
+   
+    
     
     
 }

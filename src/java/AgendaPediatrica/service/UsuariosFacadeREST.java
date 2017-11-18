@@ -126,21 +126,12 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
        }
         return Response.ok(usuarioDTO).build();
     }
-    /*@POST
-    @Consumes({MediaType.APPLICATION_JSON})
-    @Path("MostrarHijo")
-    @Produces({MediaType.APPLICATION_JSON})
-    public Response mostrarUsuarioHijo(String correo){
-        Gson gson = new Gson();
-        HashMap<String, String> mapa = gson.fromJson(correo,HashMap.class);
-        System.out.println("email:"+mapa.get("correo"));
-        return super.mostrarHijo(mapa.get("correo"));
-        
-    }*/
-    
     @Override
     protected EntityManager getEntityManager() {
         return em=Persistence.createEntityManagerFactory("AgendaPediatricaPU").createEntityManager();
     }
+    
+      
+       
     
 }

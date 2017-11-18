@@ -7,9 +7,15 @@ package AgendaPediatrica.service;
 
 import AgendaPediatrica.Hijos;
 import AgendaPediatrica.Usuarios;
+import com.google.common.collect.Lists;
+import com.google.gson.Gson;
 import dto.UsuarioDTO;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.EntityManager;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Response;
 
 /**
@@ -64,6 +70,7 @@ public abstract class AbstractFacade<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
+
     
     public Response validarUsuario(String correo){
                
@@ -106,3 +113,6 @@ public abstract class AbstractFacade<T> {
         return Response.ok(usuarioDTO).build();
     }
 }
+
+
+
