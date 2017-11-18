@@ -98,7 +98,7 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
         HashMap<String, String> mapa = gson.fromJson(correo,HashMap.class);
         System.out.println("email:"+mapa.get("correo"));
 
-        return validarUsuarioLocal(mapa.get("correo"));
+        return super.validarUsuario(mapa.get("correo"));
         
     }
     
