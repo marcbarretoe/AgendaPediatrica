@@ -120,7 +120,7 @@ public class Hijos implements Serializable {
         this.sexo = sexo;
         this.nacionalidad = nacionalidad;
    
-        //this.usuario = usuario;
+       
     }
 
     public Integer getId() {
