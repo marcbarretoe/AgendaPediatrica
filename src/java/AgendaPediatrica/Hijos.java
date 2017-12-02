@@ -121,7 +121,7 @@ public class Hijos implements Serializable {
         this.id = id;
     }
 
-    public Hijos(Integer id, BigInteger documentoIdentidad, String nombres, String apellidos, Date fechaNacimiento, String lugarNacimiento, Character sexo, String nacionalidad, String direccion, String departamento, String municipio, String barrio, String referenciaDomicilio, Character seguroMedico, String alergiaContraindicacion, Usuarios usuario) {
+    public Hijos(Integer id, BigInteger documentoIdentidad, String nombres, String apellidos, Date fechaNacimiento, String lugarNacimiento, Character sexo, String nacionalidad, String direccion, String departamento, String municipio, String barrio, String referenciaDomicilio, Character seguroMedico, String alergiaContraindicacion, Usuarios id_usu) {
         this.id = id;
         this.documentoIdentidad = documentoIdentidad;
         this.nombres = nombres;
@@ -129,6 +129,7 @@ public class Hijos implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
         this.sexo = sexo;
         this.nacionalidad = nacionalidad;
+        this.idUsuario = id_usu;
    
        
     }
@@ -189,14 +190,14 @@ public class Hijos implements Serializable {
         this.nacionalidad = nacionalidad;
     }
 
-    
+    /*
     public Usuarios getIdUsuario() {
         return idUsuario;
     }
 
     public void setIdUsuario(Usuarios idUsuario) {
         this.idUsuario = idUsuario;
-    }
+    }*/
     
     
     

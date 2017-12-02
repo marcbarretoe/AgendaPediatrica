@@ -114,22 +114,25 @@ public abstract class AbstractFacade<T> {
        }
         return Response.ok(usuarioDTO).build();
     }
-       
-      /* public Response mostrarVacunas(Integer idUSuario){
+    
+    public Response obtenerVacunasHijo(String idHijo) {
                
-       HijosDTO hijosDto = new HijosDTO();
+       HijosDTO hijoDTO = new HijosDTO();
        try{
-            Hijos hijo= (Hijos)getEntityManager().createNamedQuery("Hijos.findByIdUsuario")
-                    .setParameter("idUsuario",idUSuario).getSingleResult();
+            Hijos hijo = (Hijos)getEntityManager().createNamedQuery("Hijos.findById")
+                    .setParameter("id",Long.valueOf(idHijo)).getSingleResult();
         
-            hijosDto.setVacunasCollection((List<Vacunas>) hijo.getVacunasCollection());
-         
-          
+            hijoDTO.setVacunasCollection((List)hijo.getVacunasCollection());
+                
        } catch(Exception e){
-           hijosDto.setNombre("");
+           
+           hijoDTO.setId(0);
+           
+           e.printStackTrace();
+           throw e;
        }
-        return Response.ok(hijosDto).build();
-    }*/
+        return Response.ok(hijoDTO).build();
+    }
 }
 
 

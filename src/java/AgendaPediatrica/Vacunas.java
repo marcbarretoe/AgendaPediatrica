@@ -80,10 +80,11 @@ public class Vacunas implements Serializable {
         this.id = id;
     }
 
-    public Vacunas(Integer id, String descripcionVacunas, String enfermedadVacunas, Date fechaAplicacion, String aplicada) {
+    public Vacunas(Integer id, String descripcionVacunas, String enfermedadVacunas, Date fechaAplicacion, String aplicada,Hijos id_hijo) {
         this.id = id;
         this.descripcionVacunas = descripcionVacunas;
         this.enfermedadVacunas = enfermedadVacunas;
+        this.idHijo=id_hijo;
  
     }
 
@@ -152,7 +153,7 @@ public class Vacunas implements Serializable {
     public void setFechaAplicacion(Date fechaAplicacion) {
         this.fechaAplicacion = fechaAplicacion;
     }
-
+/*
     public Hijos getIdHijo() {
         return idHijo;
     }
@@ -161,6 +162,6 @@ public class Vacunas implements Serializable {
         this.idHijo = idHijo;
     }
 
-   
+   */
     
 }

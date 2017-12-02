@@ -99,66 +99,22 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
         HashMap<String, String> mapa = gson.fromJson(correo,HashMap.class);
         System.out.println("email:"+mapa.get("correo"));
 
-        return validarUsuarioLocal(mapa.get("correo"));
+        return super.validarUsuario(mapa.get("correo"));
         
     }
     
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
-    @Path("VacunasHijo")
+    @Path("Mostrarhijo")
     @Produces({MediaType.APPLICATION_JSON})
-    public Response vacunasHijo(String hijo){
+    public Response mostrarHijo(String correo){
         Gson gson = new Gson();
-        HashMap<String, String> mapa = gson.fromJson(hijo,HashMap.class);
-        System.out.println("email:"+mapa.get("hijo"));
-
-        return obtenerVacunasHijo(mapa.get("hijo"));
+        HashMap<String, String> mapa = gson.fromJson(correo,HashMap.class);
+        System.out.println("email:"+mapa.get("correo"));
+        return super.mostrarHijo(mapa.get("correo"));
         
     }
     
-    public Response validarUsuarioLocal(String correo) {
-               
-       UsuarioDTO usuarioDTO = new UsuarioDTO();
-       try{
-            Usuarios usuario= (Usuarios)getEntityManager().createNamedQuery("Usuarios.findByCorreoElectronico")
-                    .setParameter("correoElectronico",correo).getSingleResult();
-        
-        
-            usuarioDTO.setCorreo(usuario.getCorreoElectronico());
-            usuarioDTO.setId(usuario.getId());
-            usuarioDTO.setNombre(usuario.getNombre());
-            usuarioDTO.setHijosCollection((List<Hijos>) usuario.getHijosCollection());
-            usuarioDTO.setValido(Boolean.TRUE);
-                
-       } catch(Exception e){
-           
-           usuarioDTO.setId(0);
-           usuarioDTO.setNombre("");
-           usuarioDTO.setValido(Boolean.FALSE);
-           e.printStackTrace();
-           throw e;
-       }
-        return Response.ok(usuarioDTO).build();
-    }
-    
-     public Response obtenerVacunasHijo(String idHijo) {
-               
-       HijosDTO hijoDTO = new HijosDTO();
-       try{
-            Hijos hijo = (Hijos)getEntityManager().createNamedQuery("Hijos.findById")
-                    .setParameter("id",Long.valueOf(idHijo)).getSingleResult();
-        
-            hijoDTO.setVacunasCollection((List)hijo.getVacunasCollection());
-                
-       } catch(Exception e){
-           
-           hijoDTO.setId(0);
-           
-           e.printStackTrace();
-           throw e;
-       }
-        return Response.ok(hijoDTO).build();
-    }
     @Override
     protected EntityManager getEntityManager() {
         return em=Persistence.createEntityManagerFactory("AgendaPediatricaPU").createEntityManager();

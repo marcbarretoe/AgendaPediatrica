@@ -92,17 +92,18 @@ public class HijosFacadeREST extends AbstractFacade<Hijos> {
         return em=Persistence.createEntityManagerFactory("AgendaPediatricaPU").createEntityManager();
     }
     
-  /*  @POST
+     @POST
     @Consumes({MediaType.APPLICATION_JSON})
-    @Path("MostrarVacunas")
+    @Path("VacunasHijo")
     @Produces({MediaType.APPLICATION_JSON})
-    public Response mostrarVacunas(Integer idUsuario){
+    public Response vacunasHijo(String hijo){
         Gson gson = new Gson();
-        HashMap<String, String> mapa = gson.fromJson(idUsuario,HashMap.class);
-        System.out.println("idUsuario:"+mapa.get("idUsuario"));
+        HashMap<String, String> mapa = gson.fromJson(hijo,HashMap.class);
+        System.out.println("email:"+mapa.get("hijo"));
 
-        return super.mostrarVacunas(mapa.get("idUsuario"));
+        return super.obtenerVacunasHijo(mapa.get("hijo"));
         
-    }*/
+    }
+  
     
 }
