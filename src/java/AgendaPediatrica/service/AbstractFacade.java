@@ -97,12 +97,12 @@ public abstract class AbstractFacade<T> {
     }
     
     
-       public Response mostrarHijo(String correo){
+       public Response mostrarHijo(String idUsuario){
                
        UsuarioDTO usuarioDTO = new UsuarioDTO();
        try{
-            Usuarios usuario= (Usuarios)getEntityManager().createNamedQuery("Usuarios.findByCorreoElectronico")
-                    .setParameter("correoElectronico",correo).getSingleResult();
+            Usuarios usuario= (Usuarios)getEntityManager().createNamedQuery("Usuarios.findById")
+                    .setParameter("id",Long.valueOf(idUsuario)).getSingleResult();
         
             usuarioDTO.setHijosCollection((List<Hijos>) usuario.getHijosCollection());
          
