@@ -8,6 +8,7 @@ package AgendaPediatrica.service;
 import AgendaPediatrica.Hijos;
 import AgendaPediatrica.Usuarios;
 import com.google.gson.Gson;
+import dto.HijosDTO;
 import dto.UsuarioDTO;
 import java.util.HashMap;
 import java.util.List;
@@ -98,11 +99,24 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
         HashMap<String, String> mapa = gson.fromJson(correo,HashMap.class);
         System.out.println("email:"+mapa.get("correo"));
 
-        return super.validarUsuario(mapa.get("correo"));
+        return validarUsuarioLocal(mapa.get("correo"));
         
     }
     
-     public Response validarUsuarioLocal(String correo) {
+    @POST
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Path("VacunasHijo")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response vacunasHijo(String hijo){
+        Gson gson = new Gson();
+        HashMap<String, String> mapa = gson.fromJson(hijo,HashMap.class);
+        System.out.println("email:"+mapa.get("hijo"));
+
+        return obtenerVacunasHijo(mapa.get("hijo"));
+        
+    }
+    
+    public Response validarUsuarioLocal(String correo) {
                
        UsuarioDTO usuarioDTO = new UsuarioDTO();
        try{
@@ -125,6 +139,25 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
            throw e;
        }
         return Response.ok(usuarioDTO).build();
+    }
+    
+     public Response obtenerVacunasHijo(String idHijo) {
+               
+       HijosDTO hijoDTO = new HijosDTO();
+       try{
+            Hijos hijo = (Hijos)getEntityManager().createNamedQuery("Hijos.findById")
+                    .setParameter("id",Long.valueOf(idHijo)).getSingleResult();
+        
+            hijoDTO.setVacunasCollection((List)hijo.getVacunasCollection());
+                
+       } catch(Exception e){
+           
+           hijoDTO.setId(0);
+           
+           e.printStackTrace();
+           throw e;
+       }
+        return Response.ok(hijoDTO).build();
     }
     @Override
     protected EntityManager getEntityManager() {

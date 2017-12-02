@@ -48,6 +48,7 @@ public class Vacunas implements Serializable {
     private Date fechaAplicacion;
     //@Column(name = "id_hijo")
    // private Integer idHijo;
+    
     @JoinColumn(name="id_hijo", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Hijos idHijo;
@@ -58,11 +59,13 @@ public class Vacunas implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
     @Column(name = "descripcion_vacunas")
     private String descripcionVacunas;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)

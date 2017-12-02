@@ -21,7 +21,6 @@ public class UsuarioDTO implements Serializable{
     private String nombre;
     private String correo;
     private Boolean valido;
-
     private List<Hijos> hijosCollection;
 
     //private String<hijoshijosCollection;

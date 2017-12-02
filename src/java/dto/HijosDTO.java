@@ -5,6 +5,10 @@
  */
 package dto;
 
+import AgendaPediatrica.Hijos;
+import AgendaPediatrica.Vacunas;
+import java.util.List;
+
 /**
  *
  * @author marceloe
@@ -13,9 +17,18 @@ public class HijosDTO {
     private Integer id;
     private String nombre;
     private String sexo;
+    private List<Vacunas> vacunasCollection;
     
     public HijosDTO(){
     
+    }
+
+    public List<Vacunas> getVacunasCollection() {
+        return vacunasCollection;
+    }
+
+    public void setVacunasCollection(List<Vacunas> vacunasCollection) {
+        this.vacunasCollection = vacunasCollection;
     }
 
     public Integer getId() {
@@ -41,6 +54,5 @@ public class HijosDTO {
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
-    
-    
+      
 }

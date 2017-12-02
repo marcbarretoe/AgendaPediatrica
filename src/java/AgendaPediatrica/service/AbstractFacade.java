@@ -7,8 +7,10 @@ package AgendaPediatrica.service;
 
 import AgendaPediatrica.Hijos;
 import AgendaPediatrica.Usuarios;
+import AgendaPediatrica.Vacunas;
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
+import dto.HijosDTO;
 import dto.UsuarioDTO;
 import java.util.Collection;
 import java.util.HashMap;
@@ -112,6 +114,22 @@ public abstract class AbstractFacade<T> {
        }
         return Response.ok(usuarioDTO).build();
     }
+       
+      /* public Response mostrarVacunas(Integer idUSuario){
+               
+       HijosDTO hijosDto = new HijosDTO();
+       try{
+            Hijos hijo= (Hijos)getEntityManager().createNamedQuery("Hijos.findByIdUsuario")
+                    .setParameter("idUsuario",idUSuario).getSingleResult();
+        
+            hijosDto.setVacunasCollection((List<Vacunas>) hijo.getVacunasCollection());
+         
+          
+       } catch(Exception e){
+           hijosDto.setNombre("");
+       }
+        return Response.ok(hijosDto).build();
+    }*/
 }
 
 

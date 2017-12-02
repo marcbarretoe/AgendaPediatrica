@@ -7,10 +7,13 @@ package AgendaPediatrica;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,12 +21,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -50,6 +55,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Hijos.findByTelContacto", query = "SELECT h FROM Hijos h WHERE h.telContacto = :telContacto")
     , @NamedQuery(name = "Hijos.findBySeguroMedico", query = "SELECT h FROM Hijos h WHERE h.seguroMedico = :seguroMedico")
     , @NamedQuery(name = "Hijos.findByAlergiaContraindicacion", query = "SELECT h FROM Hijos h WHERE h.alergiaContraindicacion = :alergiaContraindicacion")*/
+    @NamedQuery(name = "Hijos.findById", query = "SELECT h FROM Hijos h WHERE h.id = :id"),
     @NamedQuery(name = "Hijos.findByIdUsuario", query = "SELECT h FROM Hijos h WHERE h.idUsuario = :idUsuario")})
 //, @NamedQuery(name = "Hijos.findByIdUsuario", query = "SELECT h FROM Hijos h WHERE h.idUsuario = :idUsuario")
 public class Hijos implements Serializable {
@@ -101,6 +107,10 @@ public class Hijos implements Serializable {
     @JoinColumn(name="id_usuario", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Usuarios idUsuario;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idHijo", fetch = FetchType.EAGER)
+    //@JoinTable(name="id")
+    private Collection<Vacunas> vacunasCollection;
     
 
     
@@ -188,7 +198,16 @@ public class Hijos implements Serializable {
         this.idUsuario = idUsuario;
     }
     
-    @Override
+    
+    
+    @XmlTransient
+    public Collection<Vacunas> getVacunasCollection() {
+        return vacunasCollection;
+    }
+
+    public void setVacunasCollection(Collection<Vacunas> vacunasCollection) {
+        this.vacunasCollection = vacunasCollection;
+    }
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);

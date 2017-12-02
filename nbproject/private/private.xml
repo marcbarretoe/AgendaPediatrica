@@ -2,14 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
-        <group>
-            <file>file:/home/marceloe/NetBeansProjects/AgendaPediatrica/src/java/AgendaPediatrica/service/UsuariosFacadeREST.java</file>
-            <file>file:/home/marceloe/NetBeansProjects/AgendaPediatrica/src/java/dto/UsuarioDTO.java</file>
-            <file>file:/home/marceloe/NetBeansProjects/AgendaPediatrica/src/java/AgendaPediatrica/Usuarios.java</file>
+        <group name="versiongit">
+            <file>file:/C:/Users/Evelyn/Desktop/Documents/NetBeansProjects/IS2/agendapediatrica/src/java/AgendaPediatrica/service/VacunasFacadeREST.java</file>
+            <file>file:/C:/Users/Evelyn/Desktop/Documents/NetBeansProjects/IS2/agendapediatrica/src/java/AgendaPediatrica/service/HijosFacadeREST.java</file>
+            <file>file:/C:/Users/Evelyn/Desktop/Documents/NetBeansProjects/IS2/agendapediatrica/src/java/AgendaPediatrica/Usuarios.java</file>
+            <file>file:/C:/Users/Evelyn/Desktop/Documents/NetBeansProjects/IS2/agendapediatrica/src/java/AgendaPediatrica/service/UsuariosFacadeREST.java</file>
+            <file>file:/C:/Users/Evelyn/Desktop/Documents/NetBeansProjects/IS2/agendapediatrica/src/java/dto/HijosDTO.java</file>
         </group>
->>>>>>> f7d002bd3f2f03f78074678288c02e1199b4b8de
     </open-files>
 </project-private>

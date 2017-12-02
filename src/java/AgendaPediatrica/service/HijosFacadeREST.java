@@ -6,6 +6,8 @@
 package AgendaPediatrica.service;
 
 import AgendaPediatrica.Hijos;
+import com.google.gson.Gson;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -20,6 +22,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  *
@@ -88,5 +91,18 @@ public class HijosFacadeREST extends AbstractFacade<Hijos> {
     protected EntityManager getEntityManager() {
         return em=Persistence.createEntityManagerFactory("AgendaPediatricaPU").createEntityManager();
     }
+    
+  /*  @POST
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Path("MostrarVacunas")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response mostrarVacunas(Integer idUsuario){
+        Gson gson = new Gson();
+        HashMap<String, String> mapa = gson.fromJson(idUsuario,HashMap.class);
+        System.out.println("idUsuario:"+mapa.get("idUsuario"));
+
+        return super.mostrarVacunas(mapa.get("idUsuario"));
+        
+    }*/
     
 }
