@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package AgendaPediatrica;
 
 import java.io.Serializable;
@@ -190,16 +186,6 @@ public class Hijos implements Serializable {
         this.nacionalidad = nacionalidad;
     }
 
-    /*
-    public Usuarios getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Usuarios idUsuario) {
-        this.idUsuario = idUsuario;
-    }*/
-    
-    
     
     @XmlTransient
     public Collection<Vacunas> getVacunasCollection() {
@@ -217,7 +203,7 @@ public class Hijos implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+        // TODO: este método no funcionará en el caso de que los campos de identificación no estén establecidos
         if (!(object instanceof Hijos)) {
             return false;
         }

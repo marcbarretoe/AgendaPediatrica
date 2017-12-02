@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package AgendaPediatrica.service;
 
 import java.util.Set;
@@ -23,10 +19,11 @@ public class ApplicationConfig extends Application {
     }
 
     /**
-     * Do not modify addRestResourceClasses() method.
-     * It is automatically populated with
-     * all resources defined in the project.
-     * If required, comment out calling this method in getClasses().
+     
+     * No modifique el método addRestResourceClasses ().
+     * Se rellena automáticamente con
+     * todos los recursos definidos en el proyecto.
+     * Si es necesario, haga un comentario llamando a este método en getClasses ().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(AgendaPediatrica.service.HijosFacadeREST.class);
